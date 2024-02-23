@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Query Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>LLM Query Interface</h1>
+    <form action="/home" method="post">
+        <label for="user_input">Input:</label>
+        <input type="text" id="user_input" name="user_input">
+        <button type="submit">Submit</button>
+    </form>
+    {% if user_input %}
+        <h2>User Input:</h2>
+        <p>{{ user_input }}</p>
+        <h2>Formatted Response:</h2>
+        <div id="resposta_formatada"></div>
+    {% endif %}
+
+    <script>
+        function imprimirGradualmente(texto) {
+            var respostaElement = document.getElementById('resposta_formatada');
+            respostaElement.innerHTML = '';
+    
+            function imprimirCaractere(index) {
+                if (index < texto.length) {
+                    respostaElement.innerHTML += texto.charAt(index);
+                    respostaElement.scrollTop = respostaElement.scrollHeight;  // Rolar para o final
+                    document.documentElement.scrollTop = document.body.scrollTop = document.body.scrollHeight;  // Rolar a página
+                    setTimeout(function() {
+                        imprimirCaractere(index + 1);
+                    }, 30);
+                }
+            }
+    
+            imprimirCaractere(0);
+        }
+    
+        // Chamar a função para imprimir gradualmente quando a página carregar
+        window.onload = function() {
+            var respostaFormatada = {{ resposta_formatada | tojson | safe }};
+            imprimirGradualmente(respostaFormatada);
+        };
+    </script>
+    
+    
+    
+    
+    
+</body>
+</html>
+
