@@ -8,7 +8,7 @@ import os
 import time
 import json
 
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "sk-"
 
 app = Flask(__name__)
 
