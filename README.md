@@ -17,13 +17,14 @@ Este projeto implementa uma aplicação web Flask que serve como uma interface p
 - Flask
 - Pandas
 - OpenAI GPT-3
+- llama-index
 
 ## Uso
 
 1. Instale as dependências necessárias usando o seguinte comando:
 
     ```bash
-    pip install flask pandas openai
+    pip install flask pandas openai llama-index
     ```
 
 2. Configure sua chave de API OpenAI atribuindo-a à variável de ambiente `OPENAI_API_KEY`:
@@ -35,7 +36,7 @@ Este projeto implementa uma aplicação web Flask que serve como uma interface p
 3. Execute a aplicação Flask:
 
     ```bash
-    python nome_do_seu_app.py
+    app.py
     ```
 
 4. Acesse a aplicação em seu navegador web em [http://localhost:5000](http://localhost:5000).
